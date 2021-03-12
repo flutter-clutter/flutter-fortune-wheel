@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:fortune_wheel/widgets/fortune_wheel.dart';
 
-class FortuneWheelController extends ChangeNotifier {
-  FortuneWheelChild value;
+class FortuneWheelController<T> extends ChangeNotifier {
+  FortuneWheelChild<T>? value;
 
   bool isAnimating = false;
   bool shouldStartAnimation = false;
@@ -17,7 +17,7 @@ class FortuneWheelController extends ChangeNotifier {
     isAnimating = true;
   }
 
-  void setValue(FortuneWheelChild fortuneWheelChild) {
+  void setValue(FortuneWheelChild<T> fortuneWheelChild) {
     value = fortuneWheelChild;
     notifyListeners();
   }

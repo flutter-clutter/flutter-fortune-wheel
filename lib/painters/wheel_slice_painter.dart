@@ -3,18 +3,18 @@ import 'dart:math';
 
 class WheelSlicePainter extends CustomPainter {
   WheelSlicePainter({
-    @required this.divider,
-    @required this.number,
-    @required this.color
+    required this.divider,
+    required this.number,
+    required this.color
   });
 
   final int divider;
   final int number;
-  final Color color;
+  final Color? color;
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint fillPaint = Paint()..color = color != null ? color : Color.lerp(Colors.red, Colors.orange, number / (divider -1));
+    Paint fillPaint = Paint()..color = color != null ? color! : Color.lerp(Colors.red, Colors.orange, number / (divider -1))!;
     Paint strokePaint = Paint();
 
     final double angleWidth = pi * 2 / divider;

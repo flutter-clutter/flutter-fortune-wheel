@@ -8,8 +8,8 @@ class DemoScreen extends StatefulWidget {
 }
 
 class _DemoScreenState extends State<DemoScreen> {
-  FortuneWheelController fortuneWheelController = FortuneWheelController();
-  FortuneWheelChild currentWheelChild;
+  FortuneWheelController<int> fortuneWheelController = FortuneWheelController();
+  FortuneWheelChild? currentWheelChild;
   int currentBalance = 0;
 
   @override
@@ -26,7 +26,7 @@ class _DemoScreenState extends State<DemoScreen> {
         return;
 
       setState(() {
-        currentBalance += fortuneWheelController.value.value;
+        currentBalance += fortuneWheelController.value!.value;
       });
     });
     super.initState();
@@ -63,7 +63,7 @@ class _DemoScreenState extends State<DemoScreen> {
                 Container(
                   height: 80,
                   width: 80,
-                  child: currentWheelChild != null ? currentWheelChild.foreground : Container(),
+                  child: currentWheelChild != null ? currentWheelChild!.foreground : Container(),
                 ),
                 SizedBox(height: 16,),
                 SizedBox(
@@ -105,13 +105,6 @@ class _DemoScreenState extends State<DemoScreen> {
         foreground: _getWheelContentCircle(color, '$verb\n$valueString €'),
         value: value
     );
-  }
-
-  _getStringRepresentation(int value) {
-    if (value.isNegative)
-      return 'You lose ${value.abs()} € :(';
-
-    return 'You win $value €! :)';
   }
 
   Container _getWheelContentCircle(Color backgroundColor, String text) {

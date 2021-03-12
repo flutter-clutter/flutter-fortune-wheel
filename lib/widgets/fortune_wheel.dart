@@ -12,14 +12,14 @@ export '../controller/fortune_wheel_controller.dart';
 
 class FortuneWheel<T> extends StatefulWidget {
   FortuneWheel({
-    @required this.controller,
+    required this.controller,
     this.turnsPerSecond = 8,
     this.rotationTimeLowerBound = 2000,
     this.rotationTimeUpperBound = 4000,
-    @required this.children
-  }): assert(children != null && children.length > 1, 'List with at least two elements must be given');
+    required this.children
+  }): assert(children.length > 1, 'List with at least two elements must be given');
 
-  final FortuneWheelController controller;
+  final FortuneWheelController<T> controller;
   final List<FortuneWheelChild<T>> children;
   final int turnsPerSecond;
   final int rotationTimeLowerBound;
@@ -30,8 +30,8 @@ class FortuneWheel<T> extends StatefulWidget {
 }
 
 class _FortuneWheelState extends State<FortuneWheel> with SingleTickerProviderStateMixin {
-  FortuneWheelChild chosen;
-  AnimationController _animationController;
+  FortuneWheelChild? chosen;
+  late AnimationController _animationController;
 
   @override
   void dispose() {
@@ -136,11 +136,10 @@ class _FortuneWheelState extends State<FortuneWheel> with SingleTickerProviderSt
         SizedBox(
           width: size / 6,
           height: size / 6,
-          child: chosen == null ? Container() : chosen.foreground
+          child: chosen == null ? Container() : chosen!.foreground
         ),
         for (Widget piece in pieces)
           Transform.rotate(
-            // TODO: Make first piece start on the top and icon appear in the center
             angle: (-fourthCircleAngle) - (pieceAngle / 2),
             child: piece,
           ),
@@ -156,7 +155,7 @@ class _FortuneWheelState extends State<FortuneWheel> with SingleTickerProviderSt
       top: size / 2 - indicatorSize,
       left: size / 2 - (indicatorSize / 2),
       child: AnimatedBuilder(
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.rotate(
             origin: Offset(0, indicatorSize / 2),
             angle: (_animationController.value * pi * 2) - (pi / (widget.children.length)),
@@ -232,7 +231,6 @@ class _FortuneWheelState extends State<FortuneWheel> with SingleTickerProviderSt
                 left: size / 2 - pieceWidth / 2,
                 child: Container(
                   padding: EdgeInsets.all(size / widget.children.length / 4),
-                  //color: Colors.green.withOpacity(0.2),
                   height: pieceHeight,
                   width: pieceWidth,
                   child: FittedBox(
