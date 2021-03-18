@@ -12,9 +12,9 @@ class WheelOutlinePainter extends CustomPainter {
     strokePaint.style = PaintingStyle.stroke;
 
     canvas.drawCircle(
-        Offset(size.width / 2, size.height / 2),
-        (size.height / 2) - strokeWidth / 2,
-        strokePaint
+      Offset(size.width / 2, size.height / 2),
+      (size.height / 2) - strokeWidth / 2,
+      strokePaint
     );
   }
 

@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 
 class TrianglePainter extends CustomPainter {
-  final Color strokeColor;
-  final PaintingStyle paintingStyle;
-  final double strokeWidth;
+  final Color fillColor;
 
   TrianglePainter({
-    this.strokeColor = Colors.black,
-    this.strokeWidth = 3,
-    this.paintingStyle = PaintingStyle.stroke
+    this.fillColor = Colors.black,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = strokeColor
-      ..strokeWidth = strokeWidth
-      ..style = paintingStyle;
+      ..color = fillColor
+      ..style = PaintingStyle.fill;
 
     canvas.drawPath(getTrianglePath(size.width, size.height), paint);
   }
@@ -31,8 +26,6 @@ class TrianglePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(TrianglePainter oldDelegate) {
-    return oldDelegate.strokeColor != strokeColor ||
-        oldDelegate.paintingStyle != paintingStyle ||
-        oldDelegate.strokeWidth != strokeWidth;
+    return true;
   }
 }

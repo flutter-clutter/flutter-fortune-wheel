@@ -25,6 +25,9 @@ class _DemoScreenState extends State<DemoScreen> {
       if (fortuneWheelController.isAnimating)
         return;
 
+      if (fortuneWheelController.shouldStartAnimation)
+        return;
+
       setState(() {
         currentBalance += fortuneWheelController.value!.value;
       });
