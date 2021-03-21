@@ -1,16 +1,9 @@
 # fortune_wheel
 
-A fortune wheel implemented in Flutter.
+A fortune wheel to make entertaining random decisions based on a given list.
 
-## Getting Started
+![The fortune wheel in action](https://www.flutterclutter.dev/wp-content/uploads/2021/03/fortune-wheel-animate-small-2.gif)
 
-This project is a starting point for a Flutter application.
+# Article
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Find the respective tutorial about how everything was created and how it's to be used on https://www.flutterclutter.dev/flutter/tutorials/implementing-a-fortune-wheel/2021/2223/
